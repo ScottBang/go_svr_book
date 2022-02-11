@@ -18,7 +18,8 @@ func main() {
 	// log 출력
 	log.Printf("Server starting on port %v\n", port)
 	// Sprintf는 Formating 된 문자열을 리턴함.
-	fmt.Printf(":%v\n", port)
+	msg := fmt.Sprintf("listen tcp:%v\n", port)
+	fmt.Println(msg)
 	// HTTP 서버 시작
 	log.Fatal(http.ListenAndServe(fmt.Sprintf(":%v", port), nil))
 }

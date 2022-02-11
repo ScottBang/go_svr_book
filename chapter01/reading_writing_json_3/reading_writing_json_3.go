@@ -25,3 +25,14 @@ func helloWorldHandler(w http.ResponseWriter, r *http.Request) {
 	encoder := json.NewEncoder(w)
 	encoder.Encode(response)
 }
+
+// func helloWorldHandler2(w http.ResponseWriter, r *http.Request) {
+// 	response := helloWorldResponse{Message: "Hello World 2"}
+// 	data, err := json.Marshal(response)
+
+// 	if err != nil {
+// 		panic("Ooops")
+// 	}
+
+// 	fmt.Fprint(w, string(data))
+// }
