@@ -1,4 +1,6 @@
 /*
+Request 로 부터 JSON 데이터 읽는 법.
+
 test: consol에 이하 코맨드 입력함.
 curl localhost:8080/helloworld -d '{"name":"scottbang"}'
 

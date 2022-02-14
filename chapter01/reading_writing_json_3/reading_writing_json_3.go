@@ -26,13 +26,17 @@ func helloWorldHandler(w http.ResponseWriter, r *http.Request) {
 	encoder.Encode(response)
 }
 
-// func helloWorldHandler2(w http.ResponseWriter, r *http.Request) {
-// 	response := helloWorldResponse{Message: "Hello World 2"}
-// 	data, err := json.Marshal(response)
+func helloWorldHandler2(w http.ResponseWriter, r *http.Request) {
+	fmt.Printf("\nProto: \n%v\n", r.Proto)
+	fmt.Printf("\nProtoMajor: \n%v\n", r.ProtoMajor)
+	fmt.Printf("\nProtoMinor: \n%v\n", r.ProtoMinor)
+	fmt.Printf("\nTLS: \n%v\n", r.TLS)
+	fmt.Printf("\nHeader: \n%v\n", r.Header)
+	fmt.Printf("\nTrailer: \n%v\n", r.Trailer)
+	fmt.Printf("\nTransferEncoding: \n%v\n", r.TransferEncoding)
 
-// 	if err != nil {
-// 		panic("Ooops")
-// 	}
+	response := helloWorldResponse{Message: "Hello World!"}
 
-// 	fmt.Fprint(w, string(data))
-// }
+	encoder := json.NewEncoder(w)
+	encoder.Encode(response)
+}

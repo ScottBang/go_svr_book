@@ -1,3 +1,9 @@
+/*
+test: consol에 이하 코맨드 입력함.
+curl localhost:8080/helloworld -d '{"name":"scottbang"}'
+
+*/
+
 package main
 
 import (

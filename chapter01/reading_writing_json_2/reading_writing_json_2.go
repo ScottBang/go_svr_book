@@ -1,3 +1,8 @@
+/*
+JSON 으로 먀샬링 한 데이터를 클라이언트에 응답 보내기.
+
+*/
+
 package main
 
 import (
