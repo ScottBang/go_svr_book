@@ -1,7 +1,40 @@
+/*
+javascript callback 함수를 추가하는 방식으로 요청에 응답하는 방식.
+*/
+
 package main
 
-import "log"
+import (
+	"encoding/json"
+	"fmt"
+	"log"
+	"net/http"
+)
+
+type helloWorldResponse struct {
+	Message string `json:"message"`
+}
 
 func main() {
-	log.Printf("Hello World %d", 100)
+	port := 8080
+	http.HandleFunc("/helloworld", helloWorldHandler)
+
+	log.Printf("Server starting on port %v\n", port)
+	log.Fatal(http.ListenAndServe(fmt.Sprintf(":%v", port), nil))
+}
+
+func helloWorldHandler(w http.ResponseWriter, r *http.Request) {
+	response := helloWorldResponse{Message: "HelloWorld"}
+	data, err := json.Marshal(response)
+	if err != nil {
+		panic("Ooops")
+	}
+
+	calback := r.URL.Query().Get("callback")
+	if calback != "" {
+		r.Header.Set("Content-Type", "application/javascript")
+		fmt.Fprintf(w, "%s(%s)", calback, string(data))
+	} else {
+		fmt.Fprint(w, string(data))
+	}
 }
