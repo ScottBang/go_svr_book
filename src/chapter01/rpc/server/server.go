@@ -14,6 +14,7 @@ const port = 1234
 func main() {
 	log.Printf("Server starting on port %v\n", port)
 	StartServer()
+	log.Println()
 }
 
 func StartServer() {

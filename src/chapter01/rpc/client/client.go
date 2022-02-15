@@ -14,6 +14,7 @@ func CreateClient() *rpc.Client {
 	client, err := rpc.Dial("tcp", fmt.Sprintf("localhost:%v", port))
 	if err != nil {
 		log.Fatal("dialing:", err)
+		log.Println()
 	}
 
 	return client
