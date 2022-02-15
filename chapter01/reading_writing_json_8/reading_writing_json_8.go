@@ -43,7 +43,19 @@ func newValidationHandler(next http.Handler) http.Handler {
 }
 
 func (h validationHandler) ServeHTTP(rw http.ResponseWriter, r *http.Request) {
+	var request helloWorldRequest
+	decoder := json.NewDecoder(r.Body)
 
+	err := decoder.Decode(&request)
+	if err != nil {
+		http.Error(rw, "Bad request", http.StatusBadRequest)
+		return
+	}
+
+	c := context.WithValue(r.Context(), validationContextKey("name"), request.Name)
+	r = r.WithContext(c)
+
+	h.next.ServeHTTP(rw, r)
 }
 
 type helloWorldHandler struct{}
