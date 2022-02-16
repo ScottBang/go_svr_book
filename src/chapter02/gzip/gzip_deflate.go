@@ -29,6 +29,7 @@ func main() {
 
 func helloWorldHandler(rw http.ResponseWriter, r *http.Request) {
 	response := helloWorldResponse{Message: "Hello " + name}
+	
 
 	encoder := json.NewEncoder(rw)
 	encoder.Encode(response)

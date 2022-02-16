@@ -22,6 +22,7 @@ func main() {
 }
 
 func helloWorldHandler(w http.ResponseWriter, r *http.Request) {
+	// CORS 구현: 서로 다른 도메인 간의 요청을 표준화하는 W3C의 제안.
 	if r.Method == "OPTIONS" {
 		w.Header().Add("Access-Control-Allow-Origin", "*")
 		w.Header().Add("Access-Control-Allow-Methods", "GET")
